@@ -45,7 +45,5 @@ public class CLI {
                 System.out.printf("El resultado de la operacion de %d/%d = %d", operando1,operando2, resultado);
                 break;
         }
-
-
+        }
     }
-}
