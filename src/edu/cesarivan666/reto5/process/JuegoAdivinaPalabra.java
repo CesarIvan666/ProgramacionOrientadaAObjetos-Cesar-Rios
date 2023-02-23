@@ -1,82 +1,95 @@
 package edu.cesarivan666.reto5.process;
 
+import java.util.Random;
 import java.util.Scanner;
 /**
- * Clase que representa el proceso del juego de adivinar palabras, que contiene la lógica y los datos del juego
+ * Clase que representa un juego para adivinar una palabra.
  */
 public class JuegoAdivinaPalabra {
+    private String[] NivelFacil = {"gato", "hola", "casa"};
+    private String[] NivelIntermedio = {"elefante", "langosta", "telefono"};
+    private String[] NivelAvanzado = {"enciclopedia", "arquitectura", "enfermedades"};
 
-    private String palabraBase;
-    private String palabraAdivinada;
-    private int intentos;
-
-    /**
-     * Constructor que inicializa el juego con la palabra base correspondiente al nivel especificado.
-     * @param nivel El nivel del juego (1=fácil, 2=intermedio, 3=avanzado)
+ /** El currentWords y currentWord son variables utilizadas
+  *  para almacenar información relacionada con el procesamiento del archivo, en este caso, las letras
      */
-    public JuegoAdivinaPalabra (int nivel) {
-        switch (nivel) {
+    private String[] currentWords;
+    private String currentWord;
+    private char[] LetrasAdivinadas;
+    /**
+     * Constructor de la clase JuegoAdivinaPalabra
+     * @param level Nivel del juego (1 para fácil, 2 para intermedio, 3 para avanzado)
+     */
+    public JuegoAdivinaPalabra (int level) {
+        switch (level) {
             case 1:
-                palabraBase = "tina";
+                currentWords = NivelFacil;
                 break;
             case 2:
-                palabraBase = "cangrejo";
+                currentWords = NivelIntermedio;
                 break;
             case 3:
-                palabraBase = "extraordinario";
+                currentWords = NivelAvanzado;
                 break;
-        }
-
-        // Inicializar palabra adivinada con guiones bajos
-        palabraAdivinada = "";
-        for (int i = 0; i < palabraBase.length(); i++) {
-            palabraAdivinada += "_";
-        }
-        intentos = 0;
-    }
-    /**
-     * Método que maneja la lógica del juego y la interacción con el usuario
-     * @param scanner El objeto Scanner que se utilizará para leer la entrada del usuario
-     */
-    public void jugar(Scanner scanner) {
-        // Comenzar adivinanza
-        while (!palabraAdivinada.equals(palabraBase)) {
-            System.out.println("Palabra a adivinar: " + palabraAdivinada);
-            System.out.println("Introduzca una letra (o 0 para salir):");
-            String letra = scanner.next();
-
-            if (letra.equals("0")) {
+            default:
+                System.out.println("Opción inválida");
                 break;
-            }
-
-            if (letra.length() != 1) {
-                System.out.println("Introduzca solo una letra.");
-                continue;
-            }
-
-            boolean letraAdivinada = false;
-            for (int i = 0; i < palabraBase.length(); i++) {
-                if (palabraBase.charAt(i) == letra.charAt(0)) {
-                    // La letra está en la palabra base
-                    letraAdivinada = true;
-                    // Reemplazar guión bajo por la letra en la palabra adivinada
-                    palabraAdivinada = palabraAdivinada.substring(0, i) + letra + palabraAdivinada.substring(i+1);
                 }
             }
+    
+    /**
+     * Método que inicia el juego
+     */
+    public void play() {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        boolean playing = true;
 
-            if (!letraAdivinada) {
-                System.out.println("Letra incorrecta, intente de nuevo.");
-                intentos++;
+        while (playing) {
+            int wordIndex = random.nextInt(currentWords.length);
+            currentWord = currentWords[wordIndex];
+            LetrasAdivinadas = new char[currentWord.length()];
+            for (int i = 0; i < LetrasAdivinadas.length; i++) {
+                LetrasAdivinadas[i] = 'X';
+            }
+
+            boolean guessed = false;
+            int tries = 0;
+            while (!guessed) {
+                System.out.println("La palabra a adivinar es: ");
+                System.out.println(LetrasAdivinadas);
+                System.out.println("Introduzca una letra: ");
+                String input = scanner.next();
+                char letter = input.charAt(0);
+
+                if (letter == '0') {
+                    playing = false;
+                    break;
+                }
+
+                if (!Character.isLetter(letter)) {
+                    System.out.println("Introduzca un carácter válido");
+                    continue;
+                }
+
+                boolean found = false;
+                for (int i = 0; i < currentWord.length(); i++) {
+                    if (Character.toLowerCase(letter) == Character.toLowerCase(currentWord.charAt(i))) {
+                        found = true;
+                        LetrasAdivinadas[i] = letter;
+                    }
+                }
+
+                if (!found) {
+                    tries++;
+                    System.out.println("¡Intenta de nuevo!");
+                }
+
+                if (String.valueOf(LetrasAdivinadas).equalsIgnoreCase(currentWord)) {
+                    System.out.println("Felicidades, adivinaste la palabra en " + tries + " intentos.");
+                    guessed = true;
+                }
             }
         }
-
-        if (intentos > 0) {
-            System.out.println("¡Felicidades, has adivinado la palabra en " + intentos + " intentos!");
-        } else {
-            System.out.println("¡Felicidades, has adivinado la palabra a la primera!");
-
-}
     }
-
 }
-
