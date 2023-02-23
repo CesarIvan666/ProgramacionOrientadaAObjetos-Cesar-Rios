@@ -27,20 +27,17 @@ public class CLI {
                 case 1:
                     System.out.print("Ingrese el numero decimal: ");
                     number = sc.next();
-                    System.out.println("El resultado en binario es: " +  ConversorNumerico.decimalToBinary(Integer.parseInt
-                            (number)));
+                    System.out.println("El resultado en binario es: " +  ConversorNumerico.decimalToBinary(number));
                     break;
                 case 2:
                     System.out.print("Ingrese el numero decimal: ");
                     number = sc.next();
-                    System.out.println("El resultado en octal es: " + ConversorNumerico.decimalToOctal(Integer.parseInt
-                            (number)));
+                    System.out.println("El resultado en octal es: " + ConversorNumerico.decimalToOctal(number));
                     break;
                 case 3:
                     System.out.print("Ingrese el numero decimal: ");
                     number = sc.next();
-                    System.out.println("El resultado en hexadecimal es: " + ConversorNumerico.decimalToHexadecimal
-                            (Integer.parseInt(number)));
+                    System.out.println("El resultado en hexadecimal es: " + ConversorNumerico.decimalToHexadecimal(number));
                     break;
                 case 4:
                     System.out.print("Ingrese el numero binario: ");

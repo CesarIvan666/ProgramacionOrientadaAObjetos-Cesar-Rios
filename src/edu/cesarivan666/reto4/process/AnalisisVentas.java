@@ -9,28 +9,28 @@ public class AnalisisVentas {
      * Método principal que ejecuta el análisis de ventas y llama a las funciones de impresión de resultados.
      */
     public static void main() {
-    // Creamos un arreglo bidimensional para almacenar los datos
-    int[][] ventas = {
-            {111, 192, 289, 415},
-            {483, 500, 470, 114},
-            {471, 355, 474, 161},
-            {427, 158, 160, 308}
-    };
+        // Creamos un arreglo bidimensional para almacenar los datos
+        int[][] ventas = {
+                {111, 192, 289, 415},
+                {483, 500, 470, 114},
+                {471, 355, 474, 161},
+                {427, 158, 160, 308}
+        };
 
-    int[] maxVentasPorSabor = obtenerMaxVentasPorSabor(ventas);
-    String[] sabores = {"chocolate", "vainilla", "fresa", "oreo"};
-    CLI.imprimirMaxVentasPorSabor(maxVentasPorSabor, sabores);
+        int[] maxVentasPorSabor = obtenerMaxVentasPorSabor(ventas);
+        String[] sabores = {"chocolate", "vainilla", "fresa", "oreo"};
+        CLI.imprimirMaxVentasPorSabor(maxVentasPorSabor, sabores);
 
-    int trimestreMaxVentasTotal = obtenerTrimestreMaxVentasTotal(ventas);
-    CLI.imprimirTrimestreMaxVentasTotal(trimestreMaxVentasTotal);
-}
+        int trimestreMaxVentasTotal = obtenerTrimestreMaxVentasTotal(ventas);
+        CLI.imprimirTrimestreMaxVentasTotal(trimestreMaxVentasTotal);
+    }
+
     /**
      * Calcula la cantidad máxima de ventas por sabor.
      *
      * @param ventas Arreglo bidimensional de ventas.
      * @return Arreglo de enteros que representa la cantidad máxima de ventas por sabor.
      */
-
     public static int[] obtenerMaxVentasPorSabor(int[][] ventas) {
         int[] maxVentasPorSabor = new int[4];
 
