@@ -6,6 +6,7 @@ import java.util.Scanner;
  * Clase que representa un juego para adivinar una palabra.
  */
 public class JuegoAdivinaPalabra {
+    boolean exit = false;
     private String[] NivelFacil = {"gato", "hola", "casa"};
     private String[] NivelIntermedio = {"elefante", "langosta", "telefono"};
     private String[] NivelAvanzado = {"enciclopedia", "arquitectura", "enfermedades"};

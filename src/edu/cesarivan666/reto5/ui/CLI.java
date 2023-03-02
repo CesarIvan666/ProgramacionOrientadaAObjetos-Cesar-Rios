@@ -1,4 +1,5 @@
 package edu.cesarivan666.reto5.ui;
+
 import edu.cesarivan666.reto5.process.JuegoAdivinaPalabra;
 
 import java.util.Scanner;
@@ -29,7 +30,6 @@ public class CLI {
                 game.play();
             }
         } while (option != 0);
-
         System.out.println("¡Gracias por jugar!");
     }
 }
