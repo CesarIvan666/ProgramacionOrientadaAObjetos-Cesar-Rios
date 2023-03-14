@@ -2,6 +2,7 @@ package edu.cesarivan666.reto6.process;
 
 import java.util.Random;
 import java.util.Scanner;
+
 /**
  * Clase que representa un juego para adivinar una palabra.
  */
@@ -13,11 +14,13 @@ public class JuegoAdivinaPalabraActualizado {
     private String[] currentWords;
     private String currentWord;
     private char[] LetrasAdivinadas;
+
     /**
      * Constructor de la clase JuegoAdivinaPalabra
+     *
      * @param level Nivel del juego (1 para fácil, 2 para intermedio, 3 para avanzado)
      */
-    public JuegoAdivinaPalabraActualizado (int level) {
+    public JuegoAdivinaPalabraActualizado(int level) {
         switch (level) {
             case 1:
                 currentWords = NivelFacil;
@@ -56,35 +59,40 @@ public class JuegoAdivinaPalabraActualizado {
                 System.out.println("La palabra a adivinar es: ");
                 System.out.println(LetrasAdivinadas);
                 System.out.println("Introduzca una letra: ");
-                String input = scanner.next();
-                char letter = input.charAt(0);
+                try {
+                    String input = scanner.next();
+                    char letter = input.charAt(0);
 
-                if (letter == '0') {
-                    playing = false;
-                    break;
-                }
-
-                if (!Character.isLetter(letter)) {
-                    System.out.println("Introduzca un carácter válido");
-                    continue;
-                }
-
-                boolean found = false;
-                for (int i = 0; i < currentWord.length(); i++) {
-                    if (Character.toLowerCase(letter) == Character.toLowerCase(currentWord.charAt(i))) {
-                        found = true;
-                        LetrasAdivinadas[i] = letter;
+                    if (letter == '0') {
+                        playing = false;
+                        break;
                     }
-                }
 
-                if (!found) {
-                    tries++;
-                    System.out.println("¡Intenta de nuevo!");
-                }
+                    if (!Character.isLetter(letter)) {
+                        System.out.println("Introduzca una letra válida");
+                        continue;
+                    }
 
-                if (String.valueOf(LetrasAdivinadas).equalsIgnoreCase(currentWord)) {
-                    System.out.println("Felicidades, adivinaste la palabra en " + tries + " intentos.");
-                    guessed = true;
+                    boolean found = false;
+                    for (int i = 0; i < currentWord.length(); i++) {
+                        if (Character.toLowerCase(letter) == Character.toLowerCase(currentWord.charAt(i))) {
+                            found = true;
+                            LetrasAdivinadas[i] = letter;
+                        }
+                    }
+
+                    if (!found) {
+                        tries++;
+                        System.out.println("¡Intenta de nuevo!");
+                    }
+
+                    if (String.valueOf(LetrasAdivinadas).equalsIgnoreCase(currentWord)) {
+                        System.out.println("Felicidades, adivinaste la palabra en " + tries + " intentos.");
+                        guessed = true;
+                    }
+                } catch (StringIndexOutOfBoundsException e) {
+                    System.out.println("Debe ingresar una letra");
+                    continue;
                 }
             }
         }
