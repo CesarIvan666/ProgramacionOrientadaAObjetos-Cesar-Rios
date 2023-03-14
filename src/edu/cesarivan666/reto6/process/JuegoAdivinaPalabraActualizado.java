@@ -69,7 +69,7 @@ public class JuegoAdivinaPalabraActualizado {
                     }
 
                     if (!Character.isLetter(letter)) {
-                        System.out.println("Introduzca una letra válida");
+                        System.out.println("Introduzca un carácter valido");
                         continue;
                     }
 
