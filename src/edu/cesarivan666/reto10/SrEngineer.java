@@ -19,6 +19,4 @@ public class SrEngineer extends JrEngineer implements Entrevistador{
     public void entrevistar (){
         System.out.println("pregunta cosas tecnicas de programacion");
     }
-
-
-}
+    }

@@ -19,4 +19,4 @@ public class Manager extends Empleados implements Entrevistador {
     public void cobrarSueldo() {
         System.out.println("Managers cobrar sueldo alto");
     }
-}
+    }

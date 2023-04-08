@@ -16,4 +16,4 @@ public abstract class Empleados {
     }
 
     abstract public void cobrarSueldo();
-}
+    }

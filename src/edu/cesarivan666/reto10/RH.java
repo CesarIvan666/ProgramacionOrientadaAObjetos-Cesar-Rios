@@ -19,4 +19,4 @@ public class RH extends Empleados implements Entrevistador{
     public void cobrarSueldo() {
         System.out.println("RH cobra sueldo bajo");
     }
-}
+    }

@@ -19,4 +19,4 @@ public class JrEngineer extends Empleados implements Programer{
     public void cobrarSueldo(){
         System.out.println("Jrs cobran sueldo medio");
     }
-}
+    }
