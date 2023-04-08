@@ -12,7 +12,7 @@ public abstract class Empleados {
      * Los empleados ejecutan la accion de trabajar
      * */
     public void trabajar(){
-        System.out.println("yo trabajo");
+        System.out.println("Empleado trabaja");
     }
 
     abstract public void cobrarSueldo();
