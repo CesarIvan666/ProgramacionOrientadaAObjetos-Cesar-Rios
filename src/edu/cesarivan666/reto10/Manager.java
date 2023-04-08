@@ -9,7 +9,7 @@ public class Manager extends Empleados implements Entrevistador {
      * */
     @Override
     public void entrevistar(){
-        System.out.println("si fueses un ani");
+        System.out.println("Entrevistador entrevista");
     }
 
     /**
