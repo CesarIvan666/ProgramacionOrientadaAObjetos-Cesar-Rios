@@ -1,0 +1,3 @@
+Empleado{edad=19, sueldo=0, registro=0, telefono=0, nombre='Juanito'}
+Empleado{edad=18, sueldo=0, registro=0, telefono=0, nombre='Mauricio'}
+Empleado{edad=20, sueldo=0, registro=0, telefono=0, nombre='Antonio'}

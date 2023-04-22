@@ -1,22 +1,48 @@
 package edu.cesarivan666.reto10;
+/**
 
-public class RH extends Empleados implements Entrevistador{
+ La clase RH es una subclase de Empleado e implementa la interfaz Entrevistador.
 
-    public String correo;
+ Representa a un empleado del departamento de Recursos Humanos.
+ */
+public class RH extends Empleado implements Entrevistador{
 
     /**
-     * Empleado de RH ejecuta la accion entrevistar
+
+     El correo electrónico del empleado de RH.
+     */
+    public String correo;
+    /**
+
+     Constructor de la clase RH que recibe el nombre y edad del empleado.
+     @param nombre El nombre del empleado de RH.
+     @param edad La edad del empleado de RH.
+     */
+    public RH (String nombre, int edad) {
+        super(nombre, edad);
+    }
+    /**
+
+     Constructor por defecto de la clase RH.
+     */
+    public RH() {
+    }
+    /**
+
+     Implementación del método entrevistar de la interfaz Entrevistador.
+     El empleado de RH ejecuta la acción de entrevistar.
      */
     @Override
     public void entrevistar(){
         System.out.println("preguntar el background");
     }
-
     /**
-    * Empleado de RH ejecuta la accion de cobrar sueldo
-    * */
+
+     Implementación del método cobrarSueldo de la clase Empleado.
+     El empleado de RH ejecuta la acción de cobrar un sueldo bajo.
+     */
     @Override
     public void cobrarSueldo() {
         System.out.println("RH cobra sueldo bajo");
     }
-    }
+}
